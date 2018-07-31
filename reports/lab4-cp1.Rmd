@@ -1,0 +1,60 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(here)
+library(GGally)
+library(broom)
+
+
+speed_dating = read_csv(here("data/speed-dating.csv"))
+
+```
+
+
+
+```{r}
+
+corr <- speed_dating %>% 
+    select('attr','sinc', 'intel', 'fun', 'amb', 'shar', 'like')
+
+
+ggcorr(corr, palette = "RdBu", label = TRUE)
+```
+
+
+```{r}
+modelo_attr = lm(like ~ attr, 
+               data = corr)
+
+summary(modelo_attr)
+
+```
+
+```{r}
+modelo_fun = lm(like ~ fun, 
+               data = corr)
+
+summary(modelo_fun)
+
+```
+
+```{r}
+modelo_mult = lm(like ~ attr + fun, 
+               data = corr)
+
+summary(modelo_mult)
+
+```
+
+```{r}
+modelo_mult = lm(like ~ attr + fun + shar + intel + sinc + amb, 
+               data = corr)
+
+summary(modelo_mult)
+
+```
