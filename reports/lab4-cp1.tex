@@ -1,0 +1,335 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={LAB5 - CP1},
+            pdfauthor={bruna barbosa},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{LAB5 - CP1}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{bruna barbosa}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \date{}
+  \predate{}\postdate{}
+
+
+\begin{document}
+\maketitle
+
+\subsubsection{1. Imports}\label{imports}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\KeywordTok{library}\NormalTok{(here)}
+\KeywordTok{library}\NormalTok{(GGally)}
+\KeywordTok{library}\NormalTok{(broom)}
+\KeywordTok{library}\NormalTok{(plotly)}
+
+\NormalTok{speed_dating =}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\KeywordTok{here}\NormalTok{(}\StringTok{"data/speed-dating.csv"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{2. Mulheres x Homens}\label{mulheres-x-homens}
+
+\paragraph{2.1. Quem gostou mais dos encontros, homens ou
+mulheres?}\label{quem-gostou-mais-dos-encontros-homens-ou-mulheres}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1 <-}\StringTok{ }\NormalTok{speed_dating }\OperatorTok{%>%}\StringTok{ }
+\StringTok{    }\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.character}\NormalTok{(gender), }\DataTypeTok{y =} \KeywordTok{as.integer}\NormalTok{(like), }\DataTypeTok{fill =} \KeywordTok{as.character}\NormalTok{(gender)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{geom_boxplot}\NormalTok{()}
+
+\NormalTok{p1}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{lab4-cp1_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+Aparentemente, homens e mulheres gostaram igualmente dos encontros.
+Porem sera que eles deram a mesma importancia para todos os atributos?
+
+\subsubsection{3. O que chamou mais atencao aos
+homens?}\label{o-que-chamou-mais-atencao-aos-homens}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{homens <-}\StringTok{ }\NormalTok{speed_dating }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{filter}\NormalTok{(gender }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{select}\NormalTok{(}\StringTok{'attr'}\NormalTok{,}\StringTok{'sinc'}\NormalTok{, }\StringTok{'intel'}\NormalTok{, }\StringTok{'fun'}\NormalTok{, }\StringTok{'amb'}\NormalTok{, }\StringTok{'shar'}\NormalTok{, }\StringTok{'like'}\NormalTok{)}
+
+\KeywordTok{ggcorr}\NormalTok{(homens, }\DataTypeTok{palette =} \StringTok{"RdBu"}\NormalTok{, }\DataTypeTok{label =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{lab4-cp1_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\subsubsection{4. O que chamou mais atencao as
+mulheres?}\label{o-que-chamou-mais-atencao-as-mulheres}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mulheres <-}\StringTok{ }\NormalTok{speed_dating }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{filter}\NormalTok{(gender }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{          }\KeywordTok{select}\NormalTok{(}\StringTok{'attr'}\NormalTok{,}\StringTok{'sinc'}\NormalTok{, }\StringTok{'intel'}\NormalTok{, }\StringTok{'fun'}\NormalTok{, }\StringTok{'amb'}\NormalTok{, }\StringTok{'shar'}\NormalTok{, }\StringTok{'like'}\NormalTok{)}
+
+\KeywordTok{ggcorr}\NormalTok{(mulheres, }\DataTypeTok{palette =} \StringTok{"RdBu"}\NormalTok{, }\DataTypeTok{label =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{lab4-cp1_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\subsubsection{5. Regressao Linear}\label{regressao-linear}
+
+Podemos afimar que tanto homens e mulheres dao importancia a diversao e
+aparencia. Isso é evidenciado no nosso modelo linear?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo_masculino =}\StringTok{ }\KeywordTok{lm}\NormalTok{(like }\OperatorTok{~}\StringTok{ }\NormalTok{attr }\OperatorTok{+}\StringTok{ }\NormalTok{fun, }
+               \DataTypeTok{data =}\NormalTok{ homens)}
+
+\KeywordTok{tidy}\NormalTok{(modelo_masculino)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          term  estimate  std.error statistic       p.value
+## 1 (Intercept) 1.1020767 0.09841783  11.19794  2.164679e-28
+## 2        attr 0.3937260 0.01545098  25.48227 1.226083e-126
+## 3         fun 0.4047771 0.01553437  26.05686 1.176463e-131
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo_feminino =}\StringTok{ }\KeywordTok{lm}\NormalTok{(like }\OperatorTok{~}\StringTok{ }\NormalTok{attr }\OperatorTok{+}\StringTok{ }\NormalTok{fun, }
+               \DataTypeTok{data =}\NormalTok{ mulheres)}
+
+\KeywordTok{tidy}\NormalTok{(modelo_feminino)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          term  estimate  std.error statistic       p.value
+## 1 (Intercept) 0.9870784 0.08549891  11.54492  4.959528e-30
+## 2        attr 0.3967818 0.01562141  25.39986 5.467561e-126
+## 3         fun 0.4240447 0.01491893  28.42326 4.920129e-153
+\end{verbatim}
+
+Comparacao entre os modelos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{glance}\NormalTok{(modelo_masculino)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
+## 1 0.5503781     0.5499943 1.168978  1434.023       0  3 -3693.609 7395.217
+##        BIC deviance df.residual
+## 1 7418.259  3201.73        2343
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{glance}\NormalTok{(modelo_feminino)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
+## 1 0.6031842     0.6028471 1.211589  1789.112       0  3 -3795.322 7598.644
+##        BIC deviance df.residual
+## 1 7621.705 3455.548        2354
+\end{verbatim}
+
+Sim, no modelo acima vemos que diversao e beleza sao importantes tanto
+para homens quanto para mulheres. No entanto levando em consideracao o
+parametro r.square (variancia dos residuos), o modelo feminino explica
+um pouco melhor o comportamento das mulheres.
+
+\subsubsection{5. Modelo Alternativo}\label{modelo-alternativo}
+
+Os modelos a seguir explicam melhor o comportanto tanto de homens quanto
+de mulheres. Esse modelo exclui ambicao pois uanto homens, quanto
+mulheres nao se importam se a pessoa tem ambicao.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo_multi_var_masculino =}\StringTok{ }\KeywordTok{lm}\NormalTok{(like }\OperatorTok{~}\StringTok{ }\NormalTok{attr }\OperatorTok{+}\StringTok{ }\NormalTok{fun }\OperatorTok{+}\StringTok{ }\NormalTok{shar }\OperatorTok{+}\StringTok{ }\NormalTok{sinc }\OperatorTok{+}\StringTok{ }\NormalTok{intel, }
+               \DataTypeTok{data =}\NormalTok{ homens)}
+
+\KeywordTok{tidy}\NormalTok{(modelo_multi_var_masculino)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          term   estimate  std.error statistic      p.value
+## 1 (Intercept) 0.36612953 0.12673347  2.888973 3.904769e-03
+## 2        attr 0.33258191 0.01559149 21.330993 1.621560e-91
+## 3         fun 0.21243158 0.01844602 11.516389 8.447693e-30
+## 4        shar 0.23376624 0.01419489 16.468338 2.154745e-57
+## 5        sinc 0.10584096 0.01973553  5.362966 9.089751e-08
+## 6       intel 0.04748622 0.02156741  2.201758 2.779114e-02
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo_multi_var_feminino =}\StringTok{ }\KeywordTok{lm}\NormalTok{(like }\OperatorTok{~}\StringTok{ }\NormalTok{attr }\OperatorTok{+}\StringTok{ }\NormalTok{fun }\OperatorTok{+}\StringTok{ }\NormalTok{shar }\OperatorTok{+}\StringTok{ }\NormalTok{sinc }\OperatorTok{+}\StringTok{ }\NormalTok{intel, }
+               \DataTypeTok{data =}\NormalTok{ mulheres)}
+
+\KeywordTok{tidy}\NormalTok{(modelo_multi_var_feminino)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          term   estimate  std.error statistic      p.value
+## 1 (Intercept) -0.3458800 0.11009357 -3.141691 1.703008e-03
+## 2        attr  0.2954307 0.01515623 19.492360 5.915842e-78
+## 3         fun  0.2175319 0.01641194 13.254493 1.406431e-38
+## 4        shar  0.2482087 0.01393438 17.812681 3.064573e-66
+## 5        sinc  0.1109577 0.01659182  6.687495 2.896485e-11
+## 6       intel  0.1543896 0.01918707  8.046542 1.405340e-15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{glance}\NormalTok{(modelo_multi_var_masculino)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
+## 1 0.6154363     0.6145177 1.093066  669.9064       0  6 -3162.131 6338.261
+##        BIC deviance df.residual
+## 1 6377.806 2500.702        2093
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{glance}\NormalTok{(modelo_multi_var_feminino)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   r.squared adj.r.squared    sigma statistic p.value df    logLik      AIC
+## 1  0.698752     0.6980395 1.065333  980.6946       0  6 -3139.314 6292.628
+##        BIC deviance df.residual
+## 1 6332.243  2399.25        2114
+\end{verbatim}
+
+
+\end{document}
