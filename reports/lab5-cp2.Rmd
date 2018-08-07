@@ -1,0 +1,78 @@
+---
+title: "LAB5 - CP2"
+author: "bruna barbosa"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+### 1. Imports
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(here)
+library(GGally)
+library(broom)
+library(plotly)
+library(dplyr)
+library(caret)
+
+speed_dating = read_csv(here("data/speed-dating2.csv"))
+
+speed_dating <- speed_dating %>%
+     mutate(dec=replace(dec, dec=='yes', 1))
+
+speed_dating <- speed_dating %>%
+     mutate(dec=replace(dec, dec=='no', 0))
+
+speed_dating$dec <- 
+    as.numeric(speed_dating$dec)
+```
+
+### 2. Dentre os fatores que você acha que podem ter efeito no match, quais fatores têm efeito significativo na chance de p1 decidir se encontrar novamente com p2? E como é esse efeito (positivo/negativo)?
+
+Usaremos a função glm() para criar o modelo para a regressão logistica
+
+Os fatores que mais influenciam na chance de p1 decidir se encontrar com p2 sao aparencia fisica (attr) e 
+quao divertido a pessoa é (fun).
+
+A variavel dec possui dois valores:
+0: p1 decidir nao se encontrar com p2 novamente
+1: p1 decidir se encontrar com p2 novamente
+
+```{r message=FALSE, warning=FALSE}
+logit1 <- glm(dec ~ attr + fun, data = speed_dating, family = "binomial")
+summary(logit1)
+```
+
+#### 2.1. Odds ratio
+Os coeficientes de attr e fun são positivos e significantes estatisticamente. O log de odds ratio é mais dificil de interpretar, por isso o expoente é utilizado.
+
+```{r message=FALSE, warning=FALSE}
+exp(coef(logit1))
+```
+
+Neste caso vemos que se a beleza de uma pessoa é acrescida de 1 unidade, sua probabilidade de ter um segundo encontro aumento em 1.74 ou 1.74%. E a diversao aumenta em 1 unidade, sua probabilidade de ter um segundo encontro é 1.34 vezes maior. 
+  Como essa é uma regressao logistica com multiplas variaveis, a mudança em uma variavel em 1 unidade considera que as outras variaveis sao constantes. Por exemplo, quando o valor de attr é acrescido em 1 unidade, o valor de fun é considerado como constante.
+  
+### 3. Que fatores nos dados têm mais efeito na chance de um participante querer se encontrar novamente com outro?
+
+```{r message=FALSE, warning=FALSE}
+logit2 <- glm(dec ~ attr + fun + intel + sinc + amb + shar + like, data = speed_dating, family = "binomial")
+summary(logit2)
+```
+  Levando em consideraçao a variavel like, o quanto uma pessoa gostou de outra é o fator mais importante para decidir se vai a um segundo encontro. Se o like é acrescido em 1 unidade, a pessoas tem 0.66 vezes mais chances em dizer sim para um segundo encontro. Em segundo lugar vem a beleza, neste segundo modelo podemos ver que beleza apenas nao é o fator mais importante para marcar um segundo encontro.
+
+
+
+
+
+
+
+
+
+
+
+
+
